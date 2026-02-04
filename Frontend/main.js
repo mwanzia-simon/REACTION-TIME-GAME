@@ -5,13 +5,12 @@ const gameContainer = document.querySelector("#game-container");
 
 //Signin details
 const signinForm = document.querySelector("#signinForm");
-const signinEmail = document.querySelector("#signinEmail");
-const signinPassword = document.querySelector("#signinPassword");
 
 //signup details
-const username = document.querySelector("#username");
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
+const signupForm = document.querySelector("#signupForm");
+
+//Api endpoint url
+const API_URL = "http://127.0.0.1:3000";
 
 //To keep track of the game state
 let state = "idle";
@@ -37,8 +36,6 @@ function saveUserScore(score) {
 function getUserScore() {
   return Number(localStorage.getItem("USER-SCORE"));
 }
-
-const API_URL = "http://localhost:3000";
 
 if (userBtn) {
   userBtn.addEventListener("click", () => {
@@ -132,4 +129,80 @@ function startGame() {
         <p>click anywhere to try again!</p>
     `;
   }
+}
+
+if (signupForm) {
+  //signup form
+  signupForm.addEventListener("submit", async (e) => {
+    //preventing reloadig of the page
+
+    e.preventDefault();
+
+    const username = document.querySelector("#username").value;
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+
+    try {
+      const res = await fetch(`${API_URL}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.message);
+        return;
+      }
+
+      alert("Account created succesifully proceed to login!");
+    } catch (error) {
+      console.log(error);
+      alert("server error!");
+    }
+  });
+}
+
+if (signinForm) {
+  //signin form
+  signinForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const signinEmail = document.querySelector("#signinEmail").value;
+    const signinPassword = document.querySelector("#signinPassword").value;
+    try {
+      const res = await fetch(`${API_URL}/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: signinEmail,
+          password: signinPassword,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message);
+        return;
+      }
+      //saving the user data to local storage
+      localStorage.setItem("USER", JSON.stringify(data.user));
+
+      //alerting the user that the process was succesiful
+      alert(`Welcome ${data.user.username}`);
+
+      //redirect the user to the game page
+      window.open("game.html", "_self");
+    } catch (error) {
+      console.log(error);
+      alert("server error!");
+    }
+  });
 }

@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "15baa159-da16-4ef4-90ab-691b9c35f9b9",
+      "username": "CODE MONARCH",
+      "email": "simonmakau160@gmail.com",
+      "password": "pass23465",
+      "score": 0
+    },
+    {
+      "id": "12bfb2ff-0d77-42dc-b493-dfaa03b60992",
+      "username": "CODE",
+      "email": "unlisted@gmail.com",
+      "password": "yguihifvjhb",
+      "score": 0
+    },
+    {
+      "id": "cf2475c5-ebb0-463f-a1a8-cb4d8504ba8a",
+      "username": "simonmakau",
+      "email": "fake@gmail.com",
+      "password": "mutua123",
+      "score": 0
+    },
+    {
+      "id": "b916f2a9-32d7-40a1-bb02-25508e61b6f0",
+      "username": "denno",
+      "email": "denofake@gmail.com",
+      "password": "paevgdcdbcvgd",
+      "score": 0
+    }
+  ]
+}
