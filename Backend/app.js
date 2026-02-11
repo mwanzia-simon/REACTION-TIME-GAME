@@ -51,7 +51,7 @@ app.post("/signup", async (req, res) => {
   res.status(201).json({
     message: "Account created successfully",
   });
-});
+});           
 
 //sign in endpoint
 app.post("/signin", async (req, res) => {
