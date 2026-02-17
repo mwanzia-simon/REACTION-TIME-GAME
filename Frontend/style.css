@@ -18,18 +18,18 @@ body {
   top: 20px;
   cursor: pointer;
 }
-.aboutGame{
-    margin: 30px auto;
+.aboutGame {
+  margin: 30px auto;
 }
-.aboutGame .aboutP{
-    font-size: 15px;
-    padding: 15px;
-    text-align: center;
-    font-family: sans-serif;
+.aboutGame .aboutP {
+  font-size: 15px;
+  padding: 15px;
+  text-align: center;
+  font-family: sans-serif;
 }
-.aboutGame h2{
-    padding-left: 10%;
-    font-family: sans-serif;
+.aboutGame h2 {
+  padding-left: 10%;
+  font-family: sans-serif;
 }
 #user:active {
   opacity: 0.5;
@@ -39,15 +39,15 @@ body {
   font-size: 20px;
   color: #fff;
 }
-#leader-board{
+#leader-board {
   position: absolute;
   background-color: #2c87d1;
-padding: 10px;
-border-radius: 5px;
-left: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  left: 20px;
   top: 20px;
 }
-#leader-board  a {
+#leader-board a {
   text-decoration: none;
   font-family: sans-serif;
   color: #fff;
@@ -63,7 +63,7 @@ left: 20px;
   justify-content: center;
   flex-direction: column;
   font-family: sans-serif;
-  background-color:#ffd154;
+  background-color: #ffd154;
   padding: 15px;
   margin: 0 auto;
 }
@@ -106,10 +106,10 @@ left: 20px;
 #game-container .clickToStart {
   font-size: 25px;
 }
-.buttons{
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
+.buttons {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
 }
 .buttons .saveBtn {
   background: #ffd154;
@@ -129,22 +129,22 @@ footer {
   font-style: oblique;
   text-align: center;
 }
-footer a{
-    background:#2c87d1;
-    padding: 7px;
-    text-decoration: none;
-    border-radius: 10px;
-    color: #fff;
+footer a {
+  background: #2c87d1;
+  padding: 7px;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #fff;
 }
-.backHome{
-     background:#2c87d1;
-    padding: 7px;
-    text-decoration: none;
-    border-radius: 10px;
-    color: #fff;
-    font-family: sans-serif;
+.backHome {
+  background: #2c87d1;
+  padding: 7px;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: sans-serif;
 }
-#leader-board-container{
+#leader-board-container {
   margin: 30px auto;
   width: 90%;
   display: flex;
@@ -152,35 +152,45 @@ footer a{
   align-items: center;
   overflow-y: auto;
 }
-#leader-board-container .user-ranking{
+#leader-board-container .user-ranking {
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 5px;
   font-family: sans-serif;
   font-weight: 600;
+  padding: 7px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, .5);
 }
 
-#leader-board-container .user-ranking .user-logo{
-height: 40px;
-width: 40px;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #ffd154;
-font-family: sans-serif;
-font-weight: 800;
-border-radius: 50%;
+#leader-board-container .user-ranking .user-logo {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  font-family: sans-serif;
+  font-weight: 800;
+  border-radius: 50%;
+  color: #2c87d1;
 }
- 
-.user-ranking:nth-child(odd){
+
+.user-ranking:nth-child(odd) {
   background-color: #2c87d1;
   color: #fff;
 }
-.user-ranking:nth-child(even){
-  background-color: #95c2e8;
+.user-ranking:nth-child(even) {
+  background-color: #2c87d1cc;
   color: #fff;
 }
 
-
+#logged-user {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #111;
+}

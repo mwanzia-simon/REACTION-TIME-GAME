@@ -2,7 +2,8 @@ const userBtn = document.querySelector("#user");
 const startBtn = document.querySelector("#get-started-btn");
 const user = document.querySelector("#user");
 const gameContainer = document.querySelector("#game-container");
-
+const loggedUser = document.querySelector("#logged-user");
+const loggedInFooter = document.querySelector("#loggedInFooter");
 //Signin details
 const signinForm = document.querySelector("#signinForm");
 
@@ -12,6 +13,18 @@ const signupForm = document.querySelector("#signupForm");
 //Api endpoint url
 const API_URL = "http://127.0.0.1:3000";
 
+window.onload = () => {
+  if (loggedInFooter) {
+    const user = JSON.parse(localStorage.getItem("USER"));
+    loggedInFooter.textContent = `Logged In as ${user.username}`;
+  }
+};
+
+if (loggedUser) {
+  const user = JSON.parse(localStorage.getItem("USER"));
+  loggedUser.textContent = `Logged In as ${user.username}`;
+}
+
 //To keep track of the game state
 let state = "idle";
 let startTime;
@@ -19,22 +32,39 @@ let timeOutId;
 let trials = 0;
 let finalReactionTime;
 let reactionTimes = [];
-const clickSound = new Audio();
-const failSound = new Audio();
-const doneSound = new Audio();
-clickSound.src = "/Frontend/assets/click.wav";
-failSound.src = "/Frontend/assets/failSound.wav";
-doneSound.src = "/Frontend/assets/doneSound.wav";
 
-//function to save the user score to ocal storage
-function saveUserScore(score) {
-  localStorage.setItem("USER-SCORE", score);
-  alert("Score saved succesifully!");
+
+//function to update user score in the local storage
+function updateUserScore(score) {
+  const user = JSON.parse(localStorage.getItem("USER"));
+  user.score = score;
+  localStorage.setItem("USER", JSON.stringify(user));
 }
 
-//Function to get user scoer
-function getUserScore() {
-  return Number(localStorage.getItem("USER-SCORE"));
+//function to save the user score to ocal storage
+async function saveUserScore(score) {
+  //locally updating the user score
+  updateUserScore(score);
+  const userID = JSON.parse(localStorage.getItem("USER")).id;
+
+  //updating the user score in the database
+  try {
+    const res = await fetch(`${API_URL}/updateuserscore`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Id: userID,
+        newScore: score,
+      }),
+    });
+
+    const data = await res.json();
+    alert(data.message);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 if (userBtn) {
@@ -44,9 +74,14 @@ if (userBtn) {
 }
 
 if (startBtn) {
-  startBtn.addEventListener("click", () => {
-    window.open("game.html", "_self");
-  });
+  const user = JSON.parse(localStorage.getItem("USER"));
+  if (user) {
+    startBtn.addEventListener("click", () => {
+      window.open("game.html", "_self");
+    });
+  } else {
+    window.open("signup.html", "_self");
+  }
 }
 
 if (gameContainer) {
@@ -66,7 +101,6 @@ document.addEventListener("keydown", (e) => {
 
 //Main game function
 function startGame() {
-  clickSound.play();
   if (state == "idle") {
     state = "waiting";
     gameContainer.innerHTML = `
@@ -86,7 +120,6 @@ function startGame() {
       startTime = performance.now();
     }, delay);
   } else if (state == "waiting") {
-    failSound.play();
     clearTimeout(timeOutId);
     state = "idle";
     gameContainer.style.background = "#2c87d1";
@@ -116,7 +149,6 @@ function startGame() {
     state = "idle";
     reactionTimes = [];
     trials = 0;
-    doneSound.play();
 
     gameContainer.style.background = "#2c87d1";
     gameContainer.innerHTML = `
@@ -161,6 +193,7 @@ if (signupForm) {
       }
 
       alert("Account created succesifully proceed to login!");
+      window.open("login.html", "_self");
     } catch (error) {
       console.log(error);
       alert("server error!");

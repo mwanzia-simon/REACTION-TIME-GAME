@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const fs = require("fs");
+const bcrypt = require("bcryptjs")
 const { v4: uuidv4 } = require("uuid");
 
 const PORT = 3000;
@@ -38,12 +39,13 @@ app.post("/signup", async (req, res) => {
   if (userExists) {
     return res.status(409).json({ message: "Email already registered" });
   }
+  const hashedPassword = await bcrypt.hash(password,10)
 
   const newUser = {
     id: uuidv4(),
     username,
     email,
-    password,
+    password:hashedPassword,
     score: 0,
   };
   data.users.push(newUser);
@@ -51,7 +53,7 @@ app.post("/signup", async (req, res) => {
   res.status(201).json({
     message: "Account created successfully",
   });
-});           
+});
 
 //sign in endpoint
 app.post("/signin", async (req, res) => {
@@ -70,7 +72,7 @@ app.post("/signin", async (req, res) => {
     return res.status(401).json({ message: "Invalid credentials!" });
   }
 
-  const passwordMatch = user.password == password;
+  const passwordMatch = await bcrypt.compare(password,user.password);
 
   //checking if the passwords match
   if (!passwordMatch) {
@@ -84,14 +86,28 @@ app.post("/signin", async (req, res) => {
       id: user.id,
       username: user.username,
       score: user.score,
-    }
+    },
   });
-
-
 });
 
 app.get("/", (req, res) => {
   res.send("<h1>This is what the server returns</h1>");
+});
+
+app.get("/getuserscores", (req, res) => {
+  const data = readUsers();
+  const users = data.users;
+  res.send(users);
+});
+
+app.post("/updateuserscore", (req, res) => {
+  const data = readUsers()
+  const { Id, newScore } = req.body;
+  const user = data.users.find((user) => user.id == Id);
+  user.score = newScore
+  writeUsers(data)
+  res.json({message:"Score saved succesifully"})
+
 });
 
 app.listen(PORT, () => {

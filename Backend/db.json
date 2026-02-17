@@ -1,39 +1,46 @@
 {
   "users": [
     {
-      "id": "15baa159-da16-4ef4-90ab-691b9c35f9b9",
+      "id": "e3964398-1a46-4db2-830e-cef8b8073a31",
+      "username": "ic211-2216_2025",
+      "email": "makau12672@gmail.com",
+      "password": "$2b$10$I84cnR6EH38tmMGJDF9IDeYh3LwpwusSlHdr9yee52sxUWg6aB0eS",
+      "score": 244
+    },
+    {
+      "id": "d0273b6c-9824-43ce-b5b0-b23a70f049c3",
       "username": "CODE MONARCH",
       "email": "simonmakau160@gmail.com",
-      "password": "pass23465",
-      "score": 0
+      "password": "$2b$10$kmm27H.tljIo8cx6I2fDc.kcBYHKrnicfmeGwmZZiE7QS0gBa2xiK",
+      "score": 433
     },
     {
-      "id": "12bfb2ff-0d77-42dc-b493-dfaa03b60992",
-      "username": "CODE",
-      "email": "unlisted@gmail.com",
-      "password": "yguihifvjhb",
-      "score": 0
+      "id": "a0002f9e-4ead-4835-9ca2-67a6f2b31bde",
+      "username": "Simon",
+      "email": "simonmwanzia@gmail.com",
+      "password": "$2b$10$/8obd2gULNFJgUU70CTQtO9ovMOk3OU/V05KlHYWLdK9Hb283KRq6",
+      "score": 454
     },
     {
-      "id": "cf2475c5-ebb0-463f-a1a8-cb4d8504ba8a",
-      "username": "simonmakau",
-      "email": "fake@gmail.com",
-      "password": "mutua123",
-      "score": 0
+      "id": "c773c146-14f6-4553-8feb-850a85697c22",
+      "username": "ALEX_MAT",
+      "email": "alexmat@gmail.com",
+      "password": "$2b$10$7gBzIoBU3Q0TN.XzmYUtbOCeGOAVsJDybFjvXOIvI2hVBqAOF5KWG",
+      "score": 240
     },
     {
-      "id": "b916f2a9-32d7-40a1-bb02-25508e61b6f0",
-      "username": "denno",
-      "email": "denofake@gmail.com",
-      "password": "paevgdcdbcvgd",
-      "score": 0
+      "id": "97927ac5-cb44-4023-a93d-ea7d52abebbb",
+      "username": "FABIAN",
+      "email": "fabian@gmail.com",
+      "password": "$2b$10$aZSYnKKdgscshS.fo28vVeECuNyHcNpEb28QwKGPeVmizd8YWaXFa",
+      "score": 185
     },
     {
-      "id": "27e066d2-06ad-4b11-9c2b-d96fe1d74a2d",
-      "username": "MWANZIASIMON",
-      "email": "mwanziasimon160@gmail.com",
-      "password": "123456",
-      "score": 0
+      "id": "c4e2951a-2ab8-4c7e-90c2-646ad71dd2fd",
+      "username": "kerry",
+      "email": "kkerry899@gmail.com",
+      "password": "$2b$10$vjtT77h1LZ1d8znLFWxZx.9fFH6tK947LDlkIFSTX6uGccGGI6xL2",
+      "score": 241
     }
   ]
 }
