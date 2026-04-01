@@ -11,7 +11,7 @@ const signinForm = document.querySelector("#signinForm");
 const signupForm = document.querySelector("#signupForm");
 
 //Api endpoint url
-const API_URL = "http://127.0.0.1:3000";
+const API_URL = "https://reaction-time-game-api.onrender.com";
 
 window.onload = () => {
   if (loggedInFooter) {
