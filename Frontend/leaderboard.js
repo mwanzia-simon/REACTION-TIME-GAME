@@ -1,5 +1,5 @@
 const leaderBoardContainer = document.querySelector("#leader-board-container");
-const API_URL = "https://reaction-time-game-j0c4.onrender.com";
+const API_URL = "https://reaction-time-game-api.onrender.com";
 
 window.onload = async () => {
   try {
